@@ -1,0 +1,31 @@
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'groovy'
+
+ext.lib_version = "$agent_version"
+ext.lib_group_id = "com.instana"
+ext.lib_artifact_id = "android-agent-plugin"
+
+compileGroovy {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+    google()
+    jcenter()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation "com.android.tools.build:gradle:$buildtools_version"
+    implementation "com.android.tools.build:gradle-api:$buildtools_version"
+
+    runtime "com.akaita.android:android-gradle-aspectj:$aspectj_version"
+}
+
